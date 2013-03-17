@@ -12,7 +12,7 @@ and how I resized it AND stored it.
 Open bundles.php and add this
 
 ```php
-'laravel-imageworkshop' => array('auto' => true),
+'imageworkshop' => array('auto' => true),
 ```
 ===DOCUMENTATION===
 
