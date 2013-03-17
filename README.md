@@ -1,24 +1,53 @@
 Laravel PHP ImageWorkshop
-=====================
-PHP class using GD library to work easily with images as layers (like Photoshop or GIMP)
+=========================
 
-This is an awesome library for handling images. 
+PHP Image Workshop is an open source class using GD library that helps you to manage images with PHP.  This class is thought like photo editing software (Photoshop, GIMP...): you can superimpose many layers or even layer groups, each layer having a background image.
+It makes the class the most flexible ever !
 
-here is an example of how I use it to store an image from a FORM upload
-and how I resized it AND stored it. 
+For what ?
+==========
+It is thought to do simple tasks like creating thumbnails or pasting watermarks and also to do more complex tasks (multiple superimpositions, images positioning...).
 
-===INSTALLATION===
+What you can do with: 
+=================
+-    pasting an image (or multiple) on another one, 
+-    cropping, 
+-    moving, 
+-    resizing, 
+-    rotating, 
+-    superposing, 
+-    writing...
 
+How it works ?
+==============
+An ImageWorkshopLayer object could be 2 different things depending on how you want to use it:
+###### a  layer: 
+this is a rectangle which has a transparent background image by default and where you can paste images (from your hard drive or an upload form...) on its background.
+######a group layer: 
+a layer that includes multiple sublayers at different level in its stack, all leveled on the top of its background. If you perform an action on the group, all its sublayers (and subgroups) will be affected !
+
+Understand that an ImageWorkshop object is a layer AND a group at the same time, unlike Photoshop (a group doesn't have a background): it has got a background image (transparent by default) and a stack of sublayers (empty by default) on the top of its background.
+
+When you have finished manipulating your layers, you just have to execute a method to get the merged image of all layer backgrounds !
+
+Installation
+============
+
+```php
+php artisan bundle:install imageworkshop
+```
 Open bundles.php and add this
 
 ```php
 'imageworkshop' => array('auto' => true),
 ```
-===DOCUMENTATION===
 
+Documentation
+=============
 http://phpimageworkshop.com/documentation.html
 
-===USAGE===
+Usage example
+=============
 
 ```php
 	public function post_upload()
@@ -44,9 +73,11 @@ http://phpimageworkshop.com/documentation.html
 
 	}
 ```
-
 Ofcourse it could be much nicer. But Im still learing. Nevertheless, this whole PHP ImageWorkshop 
 works like a charm! 
 
 Fork if you understand autoloading, because I still do not. I needed this library
 because Thumbnailable and other thumbnail bundles where not making me happy.
+
+I did not create the library, I just made it into a bundle. 
+Created by http://phpimageworkshop.com/
